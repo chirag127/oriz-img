@@ -1,0 +1,167 @@
+@import '@chirag127/oz-tokens-base/base.css';
+@import '@chirag127/oz-chrome/styles.css';
+@import '@fontsource-variable/archivo';
+@import '@fontsource-variable/newsreader';
+@import 'tailwindcss';
+
+/*
+ * oriz-img — DARKROOM identity.
+ * Warm amber safelight glow on near-black, film grain, red develop accents.
+ * Overrides the --oz-* contract with a bespoke palette + type pairing.
+ */
+:root,
+:root.dark {
+  color-scheme: dark;
+
+  /* palette — safelight amber on darkroom black */
+  --oz-bg: #0b0a09;
+  --oz-fg: #f3e9d8;
+  --oz-surface: #17130f;
+  --oz-muted: #b79a72;
+  --oz-border: #33291d;
+  --oz-accent: #e2571f; /* develop-tray red-orange */
+  --oz-accent-fg: #120a05;
+
+  /* extended darkroom tokens */
+  --dk-safelight: #ffb347; /* amber safelight glow */
+  --dk-safelight-dim: rgba(255, 179, 71, 0.14);
+  --dk-red: #d7261e; /* enlarger safelight red */
+  --dk-panel: #120e0a;
+  --dk-panel-2: #1d1712;
+  --dk-line: #2b221a;
+  --dk-tray: #241009;
+
+  /* type — Archivo (humanist grotesk) body, Newsreader display (condensed-ish serif contrast) */
+  --oz-font-display: 'Archivo Variable', system-ui, sans-serif;
+  --oz-font-body: 'Archivo Variable', system-ui, sans-serif;
+  --oz-font-serif: 'Newsreader Variable', Georgia, serif;
+  --oz-font-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--oz-bg);
+  color: var(--oz-fg);
+  font-family: var(--oz-font-body);
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  /* amber safelight radial glow behind everything */
+  background-image:
+    radial-gradient(120% 80% at 78% -10%, var(--dk-safelight-dim), transparent 60%),
+    radial-gradient(90% 60% at 12% 108%, rgba(226, 87, 31, 0.09), transparent 55%);
+  background-attachment: fixed;
+}
+
+/* film-grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- chrome overrides (header/footer from oz-chrome) ---- */
+.oz-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--oz-space-4);
+  flex-wrap: wrap;
+  padding: var(--oz-space-4) var(--oz-space-6);
+  border-bottom: 1px solid var(--dk-line);
+  background: linear-gradient(180deg, rgba(20, 15, 10, 0.9), rgba(11, 10, 9, 0.6));
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.oz-wordmark {
+  font-family: var(--oz-font-serif);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: var(--oz-fg);
+  text-decoration: none;
+}
+.oz-wordmark__dot {
+  color: var(--dk-safelight);
+}
+.oz-wordmark__site {
+  color: var(--oz-accent);
+}
+.oz-header__title {
+  color: var(--oz-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.oz-header__nav {
+  margin-left: auto;
+  display: flex;
+  gap: var(--oz-space-4);
+}
+.oz-header__nav a {
+  color: var(--oz-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.oz-header__nav a:hover {
+  color: var(--dk-safelight);
+}
+
+.oz-footer {
+  border-top: 1px solid var(--dk-line);
+  padding: var(--oz-space-8) var(--oz-space-6);
+  color: var(--oz-muted);
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oz-space-4);
+  justify-content: space-between;
+  margin-top: var(--oz-space-16);
+}
+.oz-footer a {
+  color: var(--oz-muted);
+}
+.oz-footer a:hover {
+  color: var(--dk-safelight);
+}
+
+.oz-skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.oz-skip-link:focus {
+  left: var(--oz-space-4);
+  top: var(--oz-space-4);
+  z-index: 100;
+  background: var(--oz-accent);
+  color: var(--oz-accent-fg);
+  padding: var(--oz-space-2) var(--oz-space-4);
+  border-radius: var(--oz-radius-m);
+}
+
+/* focus ring — safelight amber */
+:focus-visible {
+  outline: 2px solid var(--dk-safelight);
+  outline-offset: 2px;
+}
+
+.oz-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--oz-space-6);
+}

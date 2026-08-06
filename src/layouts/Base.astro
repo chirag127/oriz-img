@@ -1,0 +1,36 @@
+---
+import '../styles/global.css'
+import OzToolShell from '@chirag127/oz-chrome/components/OzToolShell.astro'
+
+interface Props {
+  title?: string
+  description?: string
+}
+const {
+  title = 'oriz-img — client-side image toolkit',
+  description = 'Resize, crop, compress, convert (PNG/JPEG/WebP) and strip EXIF metadata from images — 100% in your browser. No upload, no signup.',
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://img.oriz.in/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <OzToolShell site="img" title="Image toolkit" wordmarkHref="https://oriz.in">
+      <a slot="nav" href="https://oriz.in">oriz.in</a>
+      <a slot="footer" href="https://github.com/chirag127/oriz-img">Source</a>
+      <slot />
+    </OzToolShell>
+  </body>
+</html>
