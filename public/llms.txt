@@ -1,0 +1,19 @@
+# oriz Image Studio
+
+> Free, 100% in-browser image toolkit — resize, crop, compress, convert (PNG/JPG/WebP), strip EXIF metadata, and generate AI alt-text. No upload, no signup, nothing stored. Every pixel stays on your device.
+
+Live app: https://img.oriz.in
+
+## Tools
+
+- [Resize & convert](https://img.oriz.in): Set exact width/height with aspect lock, export to WebP, JPEG or PNG.
+- [Compress](https://img.oriz.in): Dial quality to shrink file size for the web while keeping images sharp.
+- [Crop](https://img.oriz.in): Crop images in-browser before export.
+- [Strip EXIF metadata](https://img.oriz.in): Canvas re-encode drops orientation, GPS and camera data automatically.
+- [AI alt-text](https://img.oriz.in): Generate accessible alt-text for any image using free in-browser AI, no key required.
+
+## About
+
+- [Info page](https://chirag127.github.io/oriz-img/): What oriz Image Studio is, features, tech.
+- [Source](https://github.com/chirag127/oriz-img): MIT-licensed source repo.
+- [Full content](https://img.oriz.in/llms-full.txt): Full site text as markdown for LLM ingestion.

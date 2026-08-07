@@ -1,0 +1,67 @@
+# oriz Image Studio — full site content
+
+> Free online image toolkit that runs entirely in your browser. Resize, crop, compress, convert PNG/JPG/WebP, strip EXIF metadata, and generate AI alt-text. No upload, no signup, nothing stored — every pixel stays on your device.
+
+Live app: https://img.oriz.in
+Source: https://github.com/chirag127/oriz-img
+License: MIT
+
+## Hero
+
+**Darkroom, in your browser.**
+
+Free online image studio. Resize, crop, compress and convert PNG, JPG and WebP — and strip EXIF metadata — right in your browser. No upload, no signup, nothing stored. Every pixel stays on your device.
+
+## What you can do
+
+### Resize & convert
+Set an exact width and height with aspect-ratio lock, then export to WebP, JPEG or PNG. Ideal for producing web-ready assets at precise dimensions.
+
+### Compress
+Dial in a quality level to shrink file size for the web while keeping images sharp. Uses in-browser image compression so nothing leaves your machine.
+
+### Crop
+Crop images in-browser before export to keep only the region you need.
+
+### Strip EXIF metadata
+Re-encoding an image through an HTML canvas drops orientation, GPS location and camera metadata automatically — a privacy-safe way to share photos without leaking where or how they were taken.
+
+### AI alt-text
+Generate accessible alt-text for any image using free in-browser AI — no API key required. Alt-text describes an image for screen readers and improves accessibility. Powered by g4f via the @chirag127/oz-ai package with multi-provider failover.
+
+## How it works
+
+1. Drop an image onto the canvas, or click to choose a file.
+2. Set the width, height and output format (WebP, JPEG or PNG). Toggle aspect-ratio lock as needed.
+3. For JPEG/WebP, choose a quality level to control compression.
+4. Click Process, then Download the result. All processing happens locally in your browser via the Canvas API.
+5. Optionally generate AI alt-text for the image, which runs in-browser via free AI.
+
+## Privacy
+
+100% client-side. Images are never uploaded to any server. There is no account, no sign-up and no tracking of your files. EXIF metadata is stripped as a side effect of canvas re-encoding, so exported images do not carry the original camera, orientation or GPS data.
+
+## Tech
+
+- Client-only Astro site (static output), zero server-side image handling.
+- React island for the interactive image studio.
+- Canvas API for resize, crop, compress, convert and EXIF stripping.
+- `browser-image-compression` for quality-controlled compression.
+- AI alt-text via g4f through `@chirag127/oz-ai` (keyless, multi-provider failover), running in the browser.
+- Shared `@chirag127/*` design-system packages (oz-tokens-base, oz-chrome, oz-file) for tokens, chrome and file handling.
+- PWA — installable, works offline.
+- Hosted on Cloudflare Pages at https://img.oriz.in.
+
+## FAQ
+
+**Do my images get uploaded?** No. Everything runs in your browser; images never leave your device.
+
+**Do I need an account?** No signup, no login, free.
+
+**Is it really free?** Yes, free and open source (MIT). AI alt-text uses keyless in-browser AI.
+
+**Which formats are supported?** Import common raster images; export to WebP, JPEG or PNG.
+
+**Does it remove metadata?** Yes — exporting through the canvas strips EXIF orientation, GPS and camera data.
+
+**Can I install it?** Yes, it is a PWA and can be installed to your device and used offline.
