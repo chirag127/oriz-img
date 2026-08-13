@@ -23,7 +23,7 @@
     "@fontsource-variable/archivo": "^5.2.5",
     "@fontsource-variable/newsreader": "^5.2.5",
     "@tailwindcss/vite": "^4.1.14",
-    "astro": "^6.4.8",
+    "astro": "^7.1.1",
     "browser-image-compression": "^2.0.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
