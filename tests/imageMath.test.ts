@@ -18,6 +18,12 @@ describe('fitDimensions', () => {
   it('handles zero input', () => {
     expect(fitDimensions(0, 0, 100, 100)).toEqual({ width: 0, height: 0 })
   })
+  it('returns zero for negative input', () => {
+    expect(fitDimensions(-5, 100, 100, 100)).toEqual({ width: 0, height: 0 })
+  })
+  it('uses the tighter axis when box is not square', () => {
+    expect(fitDimensions(1000, 1000, 200, 400)).toEqual({ width: 200, height: 200 })
+  })
 })
 
 describe('scaleByPercent', () => {
@@ -44,6 +50,9 @@ describe('clampCrop', () => {
     expect(r.x).toBe(0)
     expect(r.y).toBe(0)
   })
+  it('rounds fractional coords', () => {
+    expect(clampCrop(10.4, 10.6, 50.5, 49.4, 200, 200)).toEqual({ x: 10, y: 11, width: 51, height: 49 })
+  })
 })
 
 describe('renameForOp', () => {
@@ -52,6 +61,9 @@ describe('renameForOp', () => {
   })
   it('handles no extension', () => {
     expect(renameForOp('beach', 'webp', 'converted')).toBe('beach-converted.webp')
+  })
+  it('replaces only the last extension', () => {
+    expect(renameForOp('photo.final.png', 'jpeg', 'resized')).toBe('photo.final-resized.jpg')
   })
 })
 
@@ -70,6 +82,10 @@ describe('tables', () => {
     expect(MIME.jpeg).toBe('image/jpeg')
     expect(EXT.jpeg).toBe('jpg')
     expect(MIME.webp).toBe('image/webp')
+  })
+  it('png maps to native mime + ext', () => {
+    expect(MIME.png).toBe('image/png')
+    expect(EXT.png).toBe('png')
   })
 })
 
